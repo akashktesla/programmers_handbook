@@ -149,42 +149,60 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box52
 \@float@everytoks=\toks23
 \@floatcapt=\box53
-) (l3backend-xetex.def
+) (algorithm.sty
+Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+ (ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks24
+\c@algorithm=\count268
+) (algorithmic.sty
+Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count269
+\c@ALC@line=\count270
+\c@ALC@rem=\count271
+\c@ALC@depth=\count272
+\ALC@tlm=\skip52
+\algorithmicindent=\skip53
+)
+(l3backend-xetex.def
 File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
-\c__kernel_sys_dvipdfmx_version_int=\count268
-\l__color_backend_stack_int=\count269
-\g__color_backend_stack_int=\count270
-\g__graphics_track_int=\count271
+\c__kernel_sys_dvipdfmx_version_int=\count273
+\l__color_backend_stack_int=\count274
+\g__color_backend_stack_int=\count275
+\g__graphics_track_int=\count276
 \l__pdf_internal_box=\box54
-\g__pdf_backend_object_int=\count272
-\g__pdf_backend_annotation_int=\count273
-\g__pdf_backend_link_int=\count274
+\g__pdf_backend_object_int=\count277
+\g__pdf_backend_annotation_int=\count278
+\g__pdf_backend_link_int=\count279
 ) (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-3.
+6.
  (ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-
-(main.toc
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+ (main.toc
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
 .
  (ot1lmr.fd
@@ -197,7 +215,8 @@ File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
 2.
- (omslmsy.fd
+
+(omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
@@ -226,10 +245,20 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 16.
+(Font)              <14.4> on input line 19.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 16.
+(Font)              <10> on input line 19.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 16.
- [2] [3] (main.aux) )
-Output written on main.xdv (3 pages, 18012 bytes).
+(Font)              <7> on input line 19.
+ [2] [3] [4] [5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 194--197
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 229--232
+
+ []
+
+[8] (main.aux) )
+Output written on main.xdv (8 pages, 88904 bytes).

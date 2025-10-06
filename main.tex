@@ -5,6 +5,9 @@
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{float}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
 
 \title{Programmer's HandBook}
 \author{Akash Tesla}
@@ -43,6 +46,196 @@ anti-arborescence.
 Directed Acyclic Graphs are Directed graphs with no cycles. These graphs are commonly used 
 in representing structure with dependencies. Several efficient algorithms exist to operate
 on DAGS
+
+\subsection{Bipartite Graph}
+A Bipartite graph is one whose vertices can be split into two independend group U,V such that
+every edge connectes between U and V, and there is no odd cycles
+
+\subsection{Complete Graph}
+A complete graph is one where there is a unique edge between every pair of nodes. A complete 
+graph with n vertices is denoted as $K_n$
+
+\section{Representing Graphs}
+
+\subsection{Adjacency Matrix}
+A adjacency matrix m is a square matrix used to represent a graph. where each row and column
+corresponds to a vertex, populate the matrix with condition of  m[from node id][to ndoe id] =
+weight of the edge 1 if it is unweighted  \\
+Example: 
+$$
+M = 
+\begin{array}{c|ccc}
+    & A & B & C \\
+\hline
+A & 0 & 1 & 0 \\
+B & 0 & 0 & 1 \\
+C & 1 & 0 & 0 \\
+\end{array}
+$$
+
+\subsubsection*{Pros}
+\begin{itemize}
+    \item Space efficient for dense graph
+    \item Takes o(n) for look up
+\end{itemize}
+
+\subsubsection*{Cons}
+\begin{itemize}
+    \item Requires $O(v^2)$ space
+    \item Requires $O(v^2)$ time to iterate over all edges
+    \item where, v is the number of vertices in the graph
+\end{itemize}
+
+\subsection{Adjacency List}
+A adjacency list represents graphs with a map with key as vertices that stores a list of 
+neighbour nodes/ list of edges it connectes to with it's cost if it's weighted \\
+Example: {"A":[(C,2),(D,4)],"B":[(A,4),(C,1),(D,7)]}
+
+\subsubsection*{Pros}
+\begin{itemize}
+    \item Space efficient for sparse graph
+    \item Iterating over all edges is efficient
+    \item Prefered for traversal 
+\end{itemize}
+
+\subsubsection*{Cons}
+\begin{itemize}
+    \item Edge lookup is O(deg(v))
+    \item Not ideal for representing denser graphs
+    \item where, v is the number of vertices
+    \item deg(v), is the degree of freedom of the vertices aka number of edges connected to it
+\end{itemize}
+
+\subsection{Adjacency Map}
+A adjacency map represents graphs with a map with key as vertices that stores another map with key 
+as edges and value as it's weight \\
+Example: {"A":{"C":2,"D":6},B:{"A":7,"C":4}}
+\subsection*{Pros}
+\begin{itemize}
+    \item Edge weight lookup is O(1)
+    \item Space efficient for sparse graph
+\end{itemize}
+
+\subsection*{Cons}
+\begin{itemize}
+    \item Space ineffient than adjacency list if you don't want o(1) weight lookup
+    \item Not ideal for representing denser graphs
+\end{itemize}
+
+\subsection{Edge List}
+Edge list represnts graph as list of unordered edges. \\
+Example: [(C,A,4),(C,A,1),(B,C,6)]
+
+\section*{Pros}
+\begin{itemize}
+    \item Space efficient for sparse graphs
+    \item Iterating over all edges is efficient
+\end{itemize}
+
+\section{Cons}
+\begin{itemize}
+    \item Less space efficient for denser graphs
+    \item Edge weight lookup is O(E)
+    \item where, E is number of edges in the graph
+\end{itemize}
+
+
+\section{Graph problems and algorithms used}
+\subsection{shortest path problem}
+given a weighted graph find the shortest path in the graph \\
+Algorithms: BFS,Dijkstra's algorithm, A*, Bellaman-Ford, Floyd-Warshall...
+
+\subsection{Connectivity}
+Is there a path between Node A and Node B. \\
+Algorithms: union find data structure, Any search algorithms(DFS, BFS)
+
+\subsection{Negative cyles}
+Does my weighted graph has a negative cycle if so where, Negative cycles is a path
+cycle in which the weights add up to a negative number \\
+Algorithms: Bellaman-Ford and Floyd-Warshall
+
+\subsection{Strongly Connected Components}
+Strongly conected components are self contained cycles within a directed graph 
+where every vertex can reach every other vetex in the same cycle \\
+Algorithms:Tarjan's and Kosaraju's algorithm
+
+\subsection{Travelling Salesman Problem (TSP)}
+Given a list of cities and the distances between each pairs of cities, what is 
+the shortest possible route that visites the city exactly once and returns to 
+the origin city, this is an NP-Hard problem
+Algorithms: Held-Karp, branch and bound, Ant colony optimizationa and other 
+approximation algorithms
+
+\subsubsection{Bridges}
+A bridge is an edge in a which graph in which it's removal would increase the 
+number of connected components, They could hint at weak points, bottle neck or
+or vulnerabilities in a graph 
+
+\subsection{Articulation Points}
+An ariticulation point is any node in the graph in which it's removal would increase
+the number of connected components, They could hint at weak points, bottle neck or
+or vulnerabilities in a graph 
+
+\subsection{Minimum Spanning Tree(MST)}
+A Minimum spanning tree is a subset of a connecte, edge-weighted graph that connects
+all the vertices together, without any cycles and with minimum possible cost.MSTs are
+used in designing a least cost network, circuit design, trasportation networks and etc..\\
+Algorithms: Krushkal's, Prim's, Boruvka's algorithm
+
+\subsection{Network flow: Max flow}
+With an infinite source how much flow can we push thorough the network consider edges as 
+Pipes with water capacity or roards with car capacity.\\
+Example: Number of cars that can sustain through the traffic. \\
+Algorithms: Ford-Fulkerson, Edmonds-karp, Dinic's algorithm
+
+\section{Graph Algorithms}
+
+\subsection{Dept First Search (DFS)}
+DFS works by exploring the deepst part of the network from a starting node, then back tracking
+once you hit the dead-end. \\ \\
+\textbf{Time complexity} : O(V+E)
+\subsubsection{Use cases:} 
+\begin{itemize}
+    \item Compute a graph's minimum spanning tree
+    \item detect and find cycles in an graph
+    \item check if the graph is Bipartite
+    \item Topologically sort the nodes of a graph 
+    \item Find the bridges and articulation points
+    \item Generate mazes
+    \item Find augumenting paths in a flow network 
+\end{itemize}
+
+\subsubsection*{Pseudo code}
+
+\begin{algorithm} [H]
+    \caption{Depth First Search (DFS)}
+    \begin{algorithmic}[1]
+        \STATE \textbf{function} dfs(node)
+        \IF{Node is visited}
+        \RETURN
+        \ENDIF
+        \STATE Mark as visited
+        \STATE \textit{Problem specific logic goes here}
+        \FOR{next in node.neighbours}
+        \STATE dfs(next)
+        \ENDFOR
+    \end{algorithmic}
+\end{algorithm}
+
+Either implement logic in the given section or in a seperate function and just call 
+the dfs function
+
+\subsection{Breath First Search (BFS)}
+A BFS traverses node layer by layer, it starts at some arbitrary node of a graph and explores the neighbours nodes first before moving on to the next level of neighbours, it uses queue to traverse the graph
+\\ \\  
+\textbf{Time complexity:} O(V+E)
+
+\begin{algorithm}
+    \caption Breath First Search (BFS)
+    \begin{algorithmic}
+        \STATE \textbf{function} bfs(node)
+    \end{algorithmic}
+\end{algorithm}
 
 
 
