@@ -226,16 +226,50 @@ Either implement logic in the given section or in a seperate function and just c
 the dfs function
 
 \subsection{Breath First Search (BFS)}
-A BFS traverses node layer by layer, it starts at some arbitrary node of a graph and explores the neighbours nodes first before moving on to the next level of neighbours, it uses queue to traverse the graph
-\\ \\  
+A BFS traverses node layer by layer, it starts at some arbitrary node of a graph and explores the neighbours nodes first before moving on to the next level of neighbours, it uses queue to traverse the graph, BFS produces a prev array which can be used to construct
+a spanning tree, a tree which connects all the vertices.\\ \\  
 \textbf{Time complexity:} O(V+E)
 
 \begin{algorithm}
-    \caption Breath First Search (BFS)
-    \begin{algorithmic}
+    \caption {Breath First Search (BFS)}
+    \begin{algorithmic}[1]
         \STATE \textbf{function} bfs(node)
+        \STATE q.enqueue(node)
+        \STATE prev = [null,...,null] of size n
+        \WHILE{q is not empty}
+        \STATE node = q.dequeue()
+        \FOR{next in node.neighbours}
+        \IF{next is not visited}
+        \STATE q.enqueue(next)
+        \STATE Mark as visited
+        \STATE prev[next] = node
+        \ENDIF
+        \ENDFOR
+        
+        \ENDWHILE
     \end{algorithmic}
 \end{algorithm}
+
+
+\begin{algorithm}
+\caption{Reconstruct Path Algorithm}
+    \begin{algorithmic}
+        \STATE \textbf{function} reconstruct\_path(start,target,prev)
+        \STATE current = target
+        \STATE path = [ ]
+        \WHILE{current is not null}
+        \STATE path.append(current)
+        \STATE current = prev[current]
+        \ENDWHILE
+        \STATE reverse(path)
+        \IF{path[0]==start}
+        \RETURN path
+        \ELSE
+        \RETURN [ ]
+        \ENDIF
+    \end{algorithmic}
+\end{algorithm}
+
 
 
 
