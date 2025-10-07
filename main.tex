@@ -295,12 +295,12 @@ the neighbours of the node can be found by adding 1 in each direction.
     \end{algorithmic}
 \end{algorithm}
 
-\section{Topological Sort}
-Topological sorting is ordering of vertices in directed acyclic graph (DAG) such that
+\subsection{Topological Ordering}
+Topological Ordering is ordering of vertices in directed acyclic graph (DAG) such that
 for every edge $u \to v$, u comes before v. It is used to model dependencies like Task 
 scheduling or course prerequisites.
 
-\subsubsection*{Topolocial sort}
+\subsubsection*{Topological sort algorithm}
 The topological sort algorithm can find the a topological ordering in O(V+E) time.
 
 \begin{algorithm}[H]
@@ -310,7 +310,7 @@ The topological sort algorithm can find the a topological ordering in O(V+E) tim
         \STATE N = number of nodes
         \STATE visited = [false]*N
         \STATE post order = []
-        \FOR{current = 0; current< N; current++}
+        \FOR{current = 0; current $<$ N; current++}
         \IF{current is not visited}
         \STATE \COMMENT{Modify the dfs to return the visited nodes}
         \STATE visited nodes = dfs(current, visited, graph) 
@@ -340,6 +340,30 @@ The topological sort algorithm can find the a topological ordering in O(V+E) tim
     \end{algorithmic}
 \end{algorithm}
 
+\subsection{SSSP on DAG}
+Single source shortest path on DAG can be solved more efficiently in O(N+E) time 
+than in general graphs as on general graph it's an NP-Hard problem. Since DAG
+has no cycles, we can exploit the topological ordering of the verticies and make
+sure every edge is relaxed once in correct order, relaxed in the sense the accumulated
+weight is the lowest. 
+
+\begin{algorithm}[H]
+\caption{SSSP on DAG}
+\begin{algorithmic}
+    \STATE \textbf{function} sssp\_on\_dag(graph, source)
+    \STATE N = number of nodes
+    \STATE order = top\_sort(graph)
+    \STATE dist = [$\infty$]*N
+    \STATE dist[source] = 0
+    \FOR{u in order}
+    \FOR{ (neighbour,weight) in u.neighbours}
+    \IF{dist[u]+weight < dist[neighbour]}
+    \STATE dist[neighbour] = dist[u] + weight
+    \ENDIF
+    \ENDFOR
+    \ENDFOR
+\end{algorithmic}
+\end{algorithm}
 
 
 
