@@ -256,6 +256,7 @@ a spanning tree, a tree which connects all the vertices.\\ \\
     \begin{algorithmic}
         \STATE \textbf{function} reconstruct\_path(start,target,prev)
         \STATE current = target
+        \STATE prev[start] = null 
         \STATE path = [ ]
         \WHILE{current is not null}
         \STATE path.append(current)
