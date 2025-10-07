@@ -30,8 +30,6 @@ def reconstruct_path(start,target,prev):
         return []
 
 
-
-
 if __name__ == "__main__":
     graph = {
             0: [1, 2],

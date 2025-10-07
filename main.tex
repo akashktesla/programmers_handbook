@@ -210,7 +210,7 @@ once you hit the dead-end. \\ \\
 \begin{algorithm} [H]
     \caption{Depth First Search (DFS)}
     \begin{algorithmic}[1]
-        \STATE \textbf{function} dfs(node)
+        \STATE \textbf{function} dfs(node, visited, graph)
         \IF{Node is visited}
         \RETURN
         \ENDIF
@@ -251,7 +251,7 @@ a spanning tree, a tree which connects all the vertices.\\ \\
 \end{algorithm}
 
 
-\begin{algorithm}
+\begin{algorithm} [H]
 \caption{Reconstruct Path Algorithm}
     \begin{algorithmic}
         \STATE \textbf{function} reconstruct\_path(start,target,prev)
@@ -268,6 +268,75 @@ a spanning tree, a tree which connects all the vertices.\\ \\
         \ELSE
         \RETURN [ ]
         \ENDIF
+    \end{algorithmic}
+\end{algorithm}
+
+\subsection{Graph theory on grids}
+Grids can be represented by a graph where each cell is treated as node, and edge
+connect to it's adjacent cells, depending on the problem a node can 4 neighbours 
+(up, down, left, right) or 8 neighbours (up, down, left, right and other 4 diagonal
+movements). using these rules a graph can be represented in any forms but a better 
+way to approach the problem is by using direction vectors, we know by the rule set 
+the neighbours of the node can be found by adding 1 in each direction. 
+
+\begin{algorithm} [H]
+    \caption{Direction Vectors}
+    \begin{algorithmic}[1]
+        \STATE dr = [+1,-1,0,0]
+        \STATE dc = [0,0,+1,-1]
+        \FOR{i=0; i<len(dr); i++}
+        \STATE rr = r + dr[i]
+        \STATE cc = c + dc[i]
+        \IF{rr < 0 or cc > 0 or rr >=R or cc >= C}
+        \STATE continue
+        \COMMENT{Skip invalid cells}
+        \ENDIF
+        \ENDFOR
+    \end{algorithmic}
+\end{algorithm}
+
+\section{Topological Sort}
+Topological sorting is ordering of vertices in directed acyclic graph (DAG) such that
+for every edge $u \to v$, u comes before v. It is used to model dependencies like Task 
+scheduling or course prerequisites.
+
+\subsubsection*{Topolocial sort}
+The topological sort algorithm can find the a topological ordering in O(V+E) time.
+
+\begin{algorithm}[H]
+    \caption{Topological sort}
+    \begin{algorithmic}
+    \STATE \textbf{function} top\_sort()
+        \STATE N = number of nodes
+        \STATE visited = [false]*N
+        \STATE post order = []
+        \FOR{current = 0; current< N; current++}
+        \IF{current is not visited}
+        \STATE \COMMENT{Modify the dfs to return the visited nodes}
+        \STATE visited nodes = dfs(current, visited, graph) 
+        \STATE post order.extend(visited nodes)
+        \ENDIF
+        \ENDFOR
+        \STATE topological order = reverse(post order)
+        \RETURN topological order
+    \end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm} [H]
+    \caption{Depth First Search Modified 4 Top sort (DFS)}
+    \begin{algorithmic}[1]
+        \STATE \textbf{function} dfs(node, visited, graph)
+        \STATE visited\_nodes = [ ]
+        \IF{Node is visited}
+        \RETURN
+        \ENDIF
+        \STATE Mark as visited
+        \FOR{next in node.neighbours}
+        \STATE visited\_nodes.extend(dfs(next, visited, graph))
+        \ENDFOR
+        \STATE visited\_nodes.append(node)
+        \RETURN visited\_nodes
     \end{algorithmic}
 \end{algorithm}
 
