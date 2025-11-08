@@ -374,8 +374,34 @@ A constratin for Dijkstra's algorithm is that all edge weights should be non-neg
 This constratint is imposed to ensure that once a node's been visited it's optimal 
 distance cannot be improved. 
 
-
-
+\begin{algorithm}[H]
+    \caption{Dijkstra's  Algorithm}
+\begin{algorithmic}
+    \STATE \textbf{function} dijkstra(graph,start)
+    \STATE N = number of nodes
+    \STATE Visited = [false]*N
+    \STATE dist = [$\infty$]*N
+    \STATE dist[start] = 0
+    \STATE pq = empty priority queue
+    \STATE pq.insert((s,0))
+    \WHILE {pq.size() != 0}
+    \STATE index,minValue = pq.poll()
+    \STATE mark index as visited
+    \STATE neighbours = graph[index]
+    \FOR {neighbour in neighbours}
+    \IF {neighbour is visited}
+    \STATE \textbf{continue}
+    \STATE newDist = dist[index] + neighbour.cost
+    \IF {newDist < dist[neighbour]}
+    \STATE pq.insert((neighbour,newDist))
+    \ENDIF
+    \ENDIF
+    \ENDFOR
+    \ENDWHILE
+    \RETURN dist
+\end{algorithmic}
+\end{algorithm}
+TODO implemnet dijkstra's algorithm in the morning
 
 
 
