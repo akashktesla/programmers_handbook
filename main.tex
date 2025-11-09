@@ -391,10 +391,11 @@ distance cannot be improved.
     \FOR {neighbour in neighbours}
     \IF {neighbour is visited}
     \STATE \textbf{continue}
+    \ENDIF
     \STATE newDist = dist[index] + neighbour.cost
     \IF {newDist < dist[neighbour]}
     \STATE pq.insert((neighbour,newDist))
-    \ENDIF
+    \STATE dist[neighbour.to] = newDist
     \ENDIF
     \ENDFOR
     \ENDWHILE
