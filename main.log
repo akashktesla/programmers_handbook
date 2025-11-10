@@ -237,13 +237,13 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
  (umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+) [1
+
+])
 \tf@toc=\write3
 \openout3 = `main.toc'.
 
- [1
-
-] [2]
+ [2]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <14.4> on input line 19.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -260,5 +260,5 @@ Underfull \hbox (badness 10000) in paragraph at lines 229--232
 
  []
 
-[9] [10] [11] [12] [13] [14] (main.aux) )
-Output written on main.xdv (14 pages, 135808 bytes).
+[9] [10] [11] [12] [13] [14] [15] (main.aux) )
+Output written on main.xdv (15 pages, 143708 bytes).

@@ -402,7 +402,38 @@ distance cannot be improved.
     \RETURN dist
 \end{algorithmic}
 \end{algorithm}
-TODO implemnet dijkstra's algorithm in the morning
+
+\subsection{Bellman-Ford Algorithm}
+Bellman-Ford algorithm is a single source shortest path (sssp) algorithm. It can find
+the shortest path from one node to any other node. It's not an ideal for most sssp Since
+it has a time complexity of O(EV). It is used where edge weights have negative values, on 
+all other cases Dijkstra's is preffered.
+
+\begin{algorithm}[H]
+    \caption{Bellman-Ford Algorithm}
+    \begin{algorithmic}
+        \STATE \textbf{bellmanFord(graph,start)}
+        \STATE N = number of nodes
+        \STATE V = number of edges
+        \STATE dist = [$\infty$]*N
+        \FOR {i=0;i<V-1;i++}
+        \FOR{edge in graph.edges}
+        \STATE newCost = dist[edge.from]+edge.cost
+        \IF{newCost <dist[edge.to]}
+        \STATE dist[edge.to] = newCost
+        \ENDIF
+        \ENDFOR
+        \ENDFOR
+        \FOR {i=0;i<V-1;i++}
+        \FOR{edge in graph.edges}
+        \IF{newCost <dist[edge.to]}
+        \STATE dist[edge.to] = -$\infty$
+        \ENDIF
+        \ENDFOR
+        \ENDFOR
+
+    \end{algorithmic}
+\end{algorithm}
 
 
 
